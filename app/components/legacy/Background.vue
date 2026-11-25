@@ -1,5 +1,5 @@
 <template>
-  <div ref="ctnDom" class="fixed top-0 left-0 w-full h-full z-[-1] p-4" />
+  <div ref="ctnDom" class="fixed top-0 left-0 w-full h-full z-[-1]" />
 </template>
 
 <script setup lang="ts">

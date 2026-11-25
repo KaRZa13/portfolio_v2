@@ -5,13 +5,24 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
   css: ['./app/assets/css/main.css'],
   modules: [
-    '@nuxt/eslint', 
-    '@nuxt/ui', 
-    '@nuxt/image'
+    '@nuxt/eslint',
+    '@nuxt/ui',
+    '@nuxt/image',
+    '@nuxtjs/i18n',
   ],
   vite: {
     plugins: [
       tailwindcss(),
     ],
   },
+  i18n: {
+    locales: [
+      { code: 'fr', name: 'Français', file: 'fr.json' },
+      { code: 'en', name: 'English', file: 'en.json' }
+    ],
+    langDir: 'locales/',
+    defaultLocale: 'en',
+    // detectBrowserLanguage: false,
+    vueI18n: './i18n/i18n.config.ts',
+  }
 })
