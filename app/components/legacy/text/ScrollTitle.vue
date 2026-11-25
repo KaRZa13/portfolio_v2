@@ -52,7 +52,7 @@ onMounted(async () => {
       scrollTrigger: {
         trigger: text.value,
         start: 'top 80%',
-        end: 'bottom 40%',
+        end: 'bottom 75%',
         scrub: true,
         // markers: true,
       }

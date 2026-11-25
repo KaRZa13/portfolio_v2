@@ -1,0 +1,92 @@
+[
+  {
+    "title": "HTML",
+    "icon": "i-logos-html-5",
+    "alt": "HTML-logo"
+  },
+  {
+    "title": "CSS",
+    "icon": "i-logos-css-3",
+    "alt": "CSS-logo"
+  },
+  {
+    "title": "JAVASCRIPT",
+    "icon": "i-logos-javascript",
+    "alt": "JavaScript-logo"
+  },
+  {
+    "title": "TYPESCRIPT",
+    "icon": "i-logos-typescript-icon",
+    "alt": "TypeScript-logo"
+  },
+  {
+    "title": "VUEJS",
+    "icon": "i-logos-vue",
+    "alt": "VueJs-logo"
+  },
+  {
+    "title": "REACT",
+    "icon": "i-logos-react",
+    "alt": "React-logo"
+  },
+  {
+    "title": "TAILWINDCSS",
+    "icon": "i-logos-tailwindcss-icon",
+    "alt": "Tailwind-logo"
+  },
+  {
+    "title": "GSAP",
+    "icon": "i-logos-gsap",
+    "alt": "GSAP-logo"
+  },
+  {
+    "title": "THREEJS",
+    "icon": "i-logos-threejs",
+    "alt": "ThreeJS-logo"
+  },
+  {
+    "title": "NUXT",
+    "icon": "i-logos-nuxt-icon",
+    "alt": "Nuxt-logo"
+  },
+  {
+    "title": "NODE",
+    "icon": "i-logos-nodejs",
+    "alt": "Node-logo"
+  },
+  {
+    "title": "PYTHON",
+    "icon": "i-logos-python",
+    "alt": "Python-logo"
+  },
+  {
+    "title": "MYSQL",
+    "icon": "i-logos-mysql",
+    "alt": "MySQL-logo"
+  },
+  {
+    "title": "GIT",
+    "icon": "i-logos-git-icon",
+    "alt": "Git-logo"
+  },
+  {
+    "title": "PHP",
+    "icon": "i-logos-php",
+    "alt": "PHP-logo"
+  },
+  {
+    "title": "C#",
+    "icon": "i-logos-c-sharp",
+    "alt": "csharp-logo"
+  },
+  {
+    "title": "NOTION",
+    "icon": "i-logos-notion-icon",
+    "alt": "Node-logo"
+  },
+  {
+    "title": "JIRA",
+    "icon": "i-logos-jira",
+    "alt": "Jira-logo"
+  }
+]

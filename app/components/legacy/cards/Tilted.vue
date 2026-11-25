@@ -17,7 +17,7 @@
   >
     <main class="h-full flex flex-col">
       <div class="flex-1 p-10 lg:p-10 md:p-12">
-        <NuxtImg :src="imageUrl" :alt="title" class="w-full h-full object-cover" />
+        <UIcon :name="icon" :alt="iconAlt " class="size-18"/>
       </div>
       <div class="absolute bottom-1 lg:bottom-px left-1/2 transform -translate-x-1/2 text-center w-full">
         <h3 class="text-xl lg:text-xl md:text-2xl font-bold text-gray-800 leading-tight">{{ title }}</h3>
@@ -28,7 +28,8 @@
 
 <script setup lang="ts">
 interface Props {
-  imageUrl: string
+  icon: string
+  iconAlt: string
   title: string
   maxTilt?: number
 }

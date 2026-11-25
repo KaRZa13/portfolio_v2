@@ -1,18 +1,19 @@
 <template>
   <!-- Desktop -->
-  <section class="w-full h-auto flex flex-col justify-center items-center wh py-[40vh]">
+  <section class="w-full h-auto flex flex-col justify-center items-center">
 
-    <LegacyTextScrollTitle :text="'Une petite présentation s\'impose'" :text-class="'text-5xl'" :tag="'h2'" class="pb-[30vh]"/>
+    <LegacyTextScrollTitle :text="'Une petite présentation s\'impose'" :text-class="'text-5xl'" :tag="'h2'" class="pb-32"/>
 
-    <main ref="profilRef" class="w-full h-[75vh] bg-purple-200/50 flex items-center justify-center px-24 space-x-32">
-      <div class="w-1/4 h-full flex items-center justify-center">
-        <NuxtImg src="" alt="Photo de profil" class="rounded-full" />
-      </div>
-      <div class="w-3/4 h-full flex items-center justify-center">
-        <p class="text-xl font-light leading-10 text-justify">{{ t('legacy.profile.presentation') }}</p>
-      </div>
-    </main>
-    <Divider height="40vh"/>
+    <div class="h-screen flex items-center justify-center">  
+      <main ref="profilRef" class="w-full h-auto bg-purple-200/50 flex items-center justify-center px-24 space-x-32 py-16">
+        <div class="w-1/4 h-full flex items-center justify-center">
+          <NuxtImg src="pp.png" alt="Photo de profil" class="rounded-full" />
+        </div>
+        <div class="w-3/4 h-full flex items-center justify-center">
+          <p class="text-xl font-light leading-10 text-justify">{{ t('legacy.profile.presentation') }}</p>
+        </div>
+      </main>
+    </div>
   </section>
 </template>
 

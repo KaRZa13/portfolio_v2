@@ -14,6 +14,17 @@ export default defineNuxtConfig({
     plugins: [
       tailwindcss(),
     ],
+    optimizeDeps: {
+      include: [
+        '@vue/devtools-core',
+        '@vue/devtools-kit',
+        'gsap',
+        'gsap/ScrollSmoother',
+        'gsap/ScrollTrigger',
+        'gsap/SplitText',
+        'ogl',
+      ],
+    },
   },
   i18n: {
     locales: [
