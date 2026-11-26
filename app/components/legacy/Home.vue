@@ -2,8 +2,8 @@
   <section class="relative w-screen h-screen flex justify-center">
     <!-- Desktop -->
     <div class="flex flex-col space-y-8 items-center justify-center">
-      <LegacyTextBlur :text="t('legacy.home.name')" :text-class="'text-9xl'" :tag="'h1'" />
-      <LegacyTextBlur :text="t('legacy.home.description')" :text-class="'text-5xl'" :duration="1.25" :tag="'h2'" />
+      <LegacyTextBlur :text="t('legacy.home.name')" :text-class="'text-9xl text-black'" :tag="'h1'" />
+      <LegacyTextBlur :text="t('legacy.home.description')" :text-class="'text-5xl text-black'" :duration="1.25" :tag="'h2'" />
     </div>
 
     <!-- Scroll Down -->
