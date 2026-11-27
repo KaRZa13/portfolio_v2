@@ -1,5 +1,9 @@
 <template>
-  <article class="group relative mx-auto block h-full w-[50vw] shrink-0">
+  <article 
+    class="group relative mx-auto block h-full w-[50vw] shrink-0"
+    @mouseenter="playSound('focusIn')"
+    @mouseleave="playSound('focusOut')"
+  >
     <span class="absolute inset-0 border-2 border-dashed border-black dark:border-slate-300" />
 
     <div class="relative flex h-full w-full transform items-end overflow-hidden border-2 border-black bg-purple-300 text-black transition-transform group-hover:scale-105 dark:border-slate-300 dark:bg-purple-950 dark:text-slate-300">
@@ -62,4 +66,6 @@ interface Props {
 }
 
 const props = defineProps<Props>()
+
+const { playSound } = useSounds()
 </script>

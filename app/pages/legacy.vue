@@ -6,7 +6,10 @@
       :amplitude="0.2"
     />
 
+    <LegacyBaseSplashCursor />
+
     <LegacyBaseSettings />
+    <LegacyBaseCookies v-model="soundEnabled" @save="onCookiesSave" />
 
     <section id="wrapper">
       <main id="content" class="flex flex-col">
@@ -28,6 +31,28 @@ import { ScrollSmoother } from "gsap/ScrollSmoother";
 
 const colorMode = useColorMode();
 const isDark = computed(() => colorMode.value === "dark");
+
+const { soundVolume, musicVolume, playMusic, pauseMusic, preloadSounds } = useSounds();
+
+const ENABLED_SOUND_VOLUME = 50;
+const ENABLED_MUSIC_VOLUME = 30;
+
+const soundEnabled = ref(soundVolume.value > 0 || musicVolume.value > 0);
+
+function onCookiesSave(enabled: boolean) {
+  if (!enabled) {
+    soundVolume.value = 0;
+    musicVolume.value = 0;
+    pauseMusic();
+    return;
+  }
+
+  if (soundVolume.value === 0) soundVolume.value = ENABLED_SOUND_VOLUME;
+  if (musicVolume.value === 0) musicVolume.value = ENABLED_MUSIC_VOLUME;
+
+  preloadSounds();
+  playMusic();
+}
 
 gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
 

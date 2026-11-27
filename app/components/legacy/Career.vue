@@ -5,7 +5,11 @@
 
     <main ref="cardsRef" class="flex h-auto w-4/5 flex-col items-stretch gap-16 md:flex-row lg:w-3/4">
       <!-- Pro -->
-      <article class="career-card group relative flex-1">
+      <article 
+        class="career-card group relative flex-1"
+        @mouseenter="playSound('focusIn')"
+        @mouseleave="playSound('focusOut')"
+      >
         <span class="absolute inset-0 border-2 border-dashed border-black dark:border-slate-300" />
 
         <div class="relative flex h-full w-full flex-col border-2 border-black bg-purple-300 text-black transition-transform duration-300 group-hover:scale-105 dark:border-slate-300 dark:bg-purple-950 dark:text-slate-300">
@@ -46,7 +50,11 @@
       </article>
 
       <!-- Education -->
-      <article class="career-card group relative flex-1">
+      <article 
+        class="career-card group relative flex-1"
+        @mouseenter="playSound('focusIn')"
+        @mouseleave="playSound('focusOut')"
+      >
         <span class="absolute inset-0 border-2 border-dashed border-black dark:border-slate-300" />
 
         <div class="relative flex h-full w-full flex-col border-2 border-black bg-purple-300 text-black transition-transform duration-300 group-hover:scale-105 dark:border-slate-300 dark:bg-purple-950 dark:text-slate-300">
@@ -83,6 +91,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger'
 gsap.registerPlugin(ScrollTrigger)
 
 const { t } = useI18n()
+const { playSound } = useSounds()
 
 const proText = (id: string, field: 'type' | 'name' | 'date' | 'description') =>
   t(`globals.career.career.${id}.${field}`)

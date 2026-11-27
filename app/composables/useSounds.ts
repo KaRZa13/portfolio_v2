@@ -1,16 +1,7 @@
-/**
- * Gestion globale de l'audio : bruitages (SFX) et musique de fond,
- * avec un volume indépendant pour chacun (0 → 100, persisté en cookie).
- *
- * Usage :
- *   const { soundVolume, musicVolume, playSound, restartMusic } = useSounds()
- *   playSound('hover')
- */
-
 const SOUNDS = {
-  hover: '/sounds/legacy/hover_sound.aac',
-  focusIn: '/sounds/legacy/focus-in.aac',
-  focusOut: '/sounds/legacy/focus-out.aac',
+  hover: { src: '/sounds/legacy/hover_sound.aac', volume: 1 },
+  focusIn: { src: '/sounds/legacy/focus-in.aac', volume: 0.01 },
+  focusOut: { src: '/sounds/legacy/focus-out.aac', volume: 0.01 },
 } as const
 
 export type SoundName = keyof typeof SOUNDS
@@ -19,15 +10,15 @@ const MUSIC_SRC = '/musics/legacy/moments_like_this.aac'
 
 const DEFAULT_SOUND_VOLUME = 0
 const DEFAULT_MUSIC_VOLUME = 0
+const FALLBACK_SOUND_VOLUME = 50
+const FALLBACK_MUSIC_VOLUME = 30
 const COOKIE_MAX_AGE = 60 * 60 * 24 * 365 // 1 an
 
-// --- Singletons côté client (les éléments Audio ne sont pas sérialisables) ---
 let music: HTMLAudioElement | null = null
 const soundCache = new Map<SoundName, HTMLAudioElement>()
 let initialized = false
 let waitingForInteraction = false
 
-/** Courbe perceptuelle : un slider à 50 sonne "à moitié" plutôt que quasi plein. */
 const toGain = (volume: number) => Math.min(Math.max(volume / 100, 0), 1) ** 2
 
 export function useSounds() {
@@ -40,10 +31,15 @@ export function useSounds() {
     maxAge: COOKIE_MAX_AGE,
   })
 
-  // État partagé entre tous les composants (et SSR-safe grâce au cookie)
   const soundVolume = useState<number>('sound-volume', () => Number(soundCookie.value) || 0)
   const musicVolume = useState<number>('music-volume', () => Number(musicCookie.value) || 0)
   const isMusicPlaying = useState<boolean>('music-playing', () => false)
+
+  const lastSoundVolume = useState<number>('last-sound-volume', () => soundVolume.value || FALLBACK_SOUND_VOLUME)
+  const lastMusicVolume = useState<number>('last-music-volume', () => musicVolume.value || FALLBACK_MUSIC_VOLUME)
+
+  const isSoundMuted = computed(() => soundVolume.value === 0)
+  const isMusicMuted = computed(() => musicVolume.value === 0)
 
   // --- Musique ---------------------------------------------------------------
 
@@ -60,7 +56,6 @@ export function useSounds() {
     return music
   }
 
-  /** Les navigateurs bloquent l'autoplay : on relance au premier clic / touche. */
   function retryOnInteraction() {
     if (waitingForInteraction) return
     waitingForInteraction = true
@@ -102,54 +97,55 @@ export function useSounds() {
     playMusic()
   }
 
+  function muteMusic() {
+    musicVolume.value = isMusicMuted.value ? lastMusicVolume.value : 0
+  }
+
   // --- Bruitages -------------------------------------------------------------
 
   function getSound(name: SoundName) {
     let base = soundCache.get(name)
     if (!base) {
-      base = new Audio(SOUNDS[name])
+      base = new Audio(SOUNDS[name].src)
       base.preload = 'auto'
       soundCache.set(name, base)
     }
     return base
   }
 
-  /** Joue un bruitage. Clone l'élément pour permettre les lectures superposées (ex: hover rapide). */
   function playSound(name: SoundName) {
     if (!import.meta.client || soundVolume.value === 0) return
     const audio = getSound(name).cloneNode() as HTMLAudioElement
-    audio.volume = toGain(soundVolume.value)
+    audio.volume = toGain(soundVolume.value) * SOUNDS[name].volume
     audio.play().catch(() => {
-      // Ignoré : bloqué tant que l'utilisateur n'a pas interagi avec la page
     })
   }
 
-  /** Précharge tous les bruitages (à appeler au montage si besoin). */
   function preloadSounds() {
     if (!import.meta.client) return
     ;(Object.keys(SOUNDS) as SoundName[]).forEach(getSound)
   }
 
-  // --- Watchers globaux (une seule fois, détachés du composant appelant) ----
+  function muteSounds() {
+    soundVolume.value = isSoundMuted.value ? lastSoundVolume.value : 0
+  }
 
   if (import.meta.client && !initialized) {
     initialized = true
     effectScope(true).run(() => {
       watch(soundVolume, (v) => {
         soundCookie.value = v
+        if (v > 0) lastSoundVolume.value = v
       })
 
       watch(musicVolume, (v, old) => {
         musicCookie.value = v
+        if (v > 0) lastMusicVolume.value = v
         if (music) music.volume = toGain(v)
-        // Le slider pilote la lecture : 0 = pause, remonter depuis 0 = lecture
         if (v === 0) pauseMusic()
         else if (old === 0 || !isMusicPlaying.value) playMusic()
       })
     })
-
-    // Volume musique déjà réglé (cookie) → on tente de lancer la musique
-    if (musicVolume.value > 0) playMusic()
   }
 
   return {
@@ -157,13 +153,19 @@ export function useSounds() {
     soundVolume,
     musicVolume,
     isMusicPlaying: readonly(isMusicPlaying),
+    isSoundMuted,
+    isMusicMuted,
+
     // musique
     playMusic,
     pauseMusic,
     toggleMusic,
     restartMusic,
+    muteMusic,
+
     // bruitages
     playSound,
     preloadSounds,
+    muteSounds
   }
 }

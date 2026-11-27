@@ -21,14 +21,16 @@
     <footer class="w-full h-2/5 bg-purple-200/60 dark:bg-purple-500/60 flex flex-col justify-center items-center gap-8">
       <!-- Icons -->
       <div class="flex justify-center items-center gap-8">
-        <div v-for="(social, index) in socials" :key="index">
+        <div 
+          v-for="(social, index) in socials" :key="index"
+          @mouseenter="playSound('hover')"
+        >
           <a :href="social.link" target="_blank" rel="nonreferrer">
             <button class="relative w-24 h-24 rounded-full group cursor-pointer">
               <div :class="social.bg_color" class="floater w-full h-full absolute top-0 left-0 rounded-full duration-300 group-hover:-top-18 group-hover:shadow-2xl" />
               <div :class="[social.border_color, social.text_color]" class="icon relative z-10 w-full h-full flex items-center justify-center border-2 rounded-full">
                 <UIcon :name="social.icon" class="size-12" />
               </div>
-              
             </button>
           </a>
         </div>
@@ -48,4 +50,5 @@ import socials from '@/assets/globals/socials.json'
 import music from '@/assets/legacy/music.json'
 
 const { t } = useI18n()
+const { playSound } = useSounds()
 </script>

@@ -41,7 +41,7 @@
           <div class="flex items-center gap-2 p-2">
             <p class="w-full flex-1 pl-2">{{ t('legacy.settings.sounds') }}</p>
             <div class="w-2/3 flex items-center gap-1.5">
-              <UIcon :name="soundIcon" class="size-6" />
+              <UIcon :name="soundIcon" class="size-6 cursor-pointer" @click="muteSounds" />
               <USlider
                 v-model="soundVolume"
                 :ui="{
@@ -61,8 +61,8 @@
           <div class="flex items-center gap-2 p-2">
             <p class="w-full flex-1 pl-2">{{ t('legacy.settings.music') }}</p>
             <div class="w-2/3 flex items-center gap-1.5">
-              <UIcon name="lucide:refresh-cw" class="size-6" @click="restartMusic" />
-              <UIcon :name="musicIcon" class="size-6" />
+              <UIcon name="lucide:refresh-cw" class="size-6 cursor-pointer" @click="restartMusic" />
+              <UIcon :name="musicIcon" class="size-6 cursor-pointer" @click="muteMusic" />
               <USlider
                 v-model="musicVolume"
                 :ui="{
@@ -105,10 +105,8 @@ gsap.registerPlugin(Flip, ScrollTrigger)
 
 const { t, locale, setLocale } = useI18n()
 const isSettingsOpen = ref(true)
-// const isSoundPlaying = ref(false)
-// const isMusicPlaying = ref(false)
 
-const { soundVolume, musicVolume, restartMusic } = useSounds()
+const { soundVolume, musicVolume, restartMusic, muteMusic, muteSounds } = useSounds()
 const musicIcon = computed(() => getVolumeIcon(musicVolume.value))
 const soundIcon = computed(() => getVolumeIcon(soundVolume.value))
 
@@ -179,14 +177,6 @@ const toggleSettings = async () => {
     )
   }
 }
-
-// const toggleSound = () => {
-//   console.log("Sound toggled")
-// }
-
-// const toggleMusic = () => {
-//   console.log("Music toggled")
-// }
 
 function getVolumeIcon(volume: number) {
   if (volume === 0) return 'i-lucide-volume-x'

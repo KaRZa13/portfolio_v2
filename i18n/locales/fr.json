@@ -100,6 +100,12 @@
     "credits": {
       "dev": "Portfolio réalisé par Rafael MURO - 2026",
       "music": "Musique : 'Moment like this' par Chill Denis"
+    },
+    "cookies": {
+      "title": "Ce site utilise de la musique et des sons, il est conseillé de les utiliser pour une expérience optimale",
+      "description": "Ce site n'utilise aucuns cookies",
+      "choice": "Activer les effets sonores :",
+      "save": "Enregistrer"
     }
   }
 }

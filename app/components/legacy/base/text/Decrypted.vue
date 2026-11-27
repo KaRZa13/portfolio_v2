@@ -29,9 +29,7 @@ const props = withDefaults(
     revealDirection?: RevealDirection
     useOriginalCharsOnly?: boolean
     characters?: string
-    /** Classe appliquée aux caractères révélés / au repos */
     charClass?: string
-    /** Classe appliquée aux caractères encore brouillés */
     encryptedClass?: string
     animateOn?: AnimateOn
   }>(),
@@ -98,7 +96,6 @@ function shuffleText(original: string, revealed: Set<number>): string {
       .filter((p) => !p.isSpace && !p.isRevealed)
       .map((p) => p.char)
  
-    // Mélange de Fisher-Yates
     for (let i = pool.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
       [pool[i], pool[j]] = [pool[j], pool[i]]
@@ -191,11 +188,9 @@ function onMouseLeave() {
   if (props.animateOn === 'hover') isHovering.value = false
 }
  
-// IntersectionObserver uniquement côté client (compatible SSR)
 onMounted(() => {
   if (props.animateOn !== 'view' || !containerRef.value) return
  
-  // Entrée dans l'écran → lance l'effet ; sortie → reset, pour le rejouer au prochain passage
   observer = new IntersectionObserver(
     (entries) => {
       for (const entry of entries) isHovering.value = entry.isIntersecting

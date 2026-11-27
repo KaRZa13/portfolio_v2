@@ -24,6 +24,8 @@ export default defineNuxtConfig({
         'gsap/SplitText',
         'gsap/Flip',
         'ogl',
+        'zod',
+        '@emailjs/browser',
       ],
     },
   },
