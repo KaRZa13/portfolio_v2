@@ -34,6 +34,10 @@ export default defineNuxtConfig({
       emailjsPublicKey: '',
     },
   },
+  routeRules: {
+    '/': { redirect: '/legacy' },
+    '/fr': { redirect: '/fr/legacy' },
+  },
   i18n: {
     locales: [
       { code: 'fr', name: 'Français', file: 'fr.json' },

@@ -61,6 +61,7 @@
           <div class="flex items-center gap-2 p-2">
             <p class="w-full flex-1 pl-2">{{ t('legacy.settings.music') }}</p>
             <div class="w-2/3 flex items-center gap-1.5">
+              <UIcon name="lucide:refresh-cw" class="size-6" @click="restartMusic" />
               <UIcon :name="musicIcon" class="size-6" />
               <USlider
                 v-model="musicVolume"
@@ -107,10 +108,9 @@ const isSettingsOpen = ref(true)
 // const isSoundPlaying = ref(false)
 // const isMusicPlaying = ref(false)
 
+const { soundVolume, musicVolume, restartMusic } = useSounds()
 const musicIcon = computed(() => getVolumeIcon(musicVolume.value))
-const musicVolume = ref(0)
 const soundIcon = computed(() => getVolumeIcon(soundVolume.value))
-const soundVolume = ref(0)
 
 const settingsPanel = useTemplateRef<HTMLElement>('settings-panel')
 const settings = useTemplateRef<HTMLElement>('settings')
