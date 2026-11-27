@@ -27,6 +27,13 @@ export default defineNuxtConfig({
       ],
     },
   },
+  runtimeConfig: {
+    public: {
+      emailjsServiceId: '',
+      emailjsTemplateId: '',
+      emailjsPublicKey: '',
+    },
+  },
   i18n: {
     locales: [
       { code: 'fr', name: 'Français', file: 'fr.json' },

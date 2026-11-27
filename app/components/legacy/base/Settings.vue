@@ -7,7 +7,7 @@
     <div ref="reveal">
       <div
         ref="settings-panel"
-        class="bg-purple-300 dark:bg-purple-950 flex flex-col rounded-3xl corner-squircle p-2"
+        class="bg-purple-300 dark:bg-purple-950 border border-slate-900 flex flex-col rounded-3xl corner-squircle p-2"
         :class="isSettingsOpen ? 'min-w-xs max-w-md' : ''"
       >
         <div class="flex items-center justify-between gap-2 text-slate-600 dark:text-slate-300 italic font-bold text-lg">
