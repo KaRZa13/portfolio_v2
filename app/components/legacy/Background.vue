@@ -4,6 +4,7 @@
 
 <script setup lang="ts">
 import { Renderer, Program, Mesh, Color, Triangle } from 'ogl'
+import { gsap } from 'gsap'
 
 interface BackgroundProps {
   color?: [number, number, number]
@@ -118,4 +119,21 @@ onBeforeUnmount(() => {
     renderer.gl.getExtension('WEBGL_lose_context')?.loseContext()
   }
 })
+
+const currentColor = { r: props.color[0], g: props.color[1], b: props.color[2] }
+
+watch(
+  () => props.color,
+  ([r, g, b]) => {
+    gsap.to(currentColor, {
+      r, g, b,
+      duration: 0.6,
+      ease: 'power2.out',
+      overwrite: true,
+      onUpdate: () => {
+        program?.uniforms.uColor.value.set(currentColor.r, currentColor.g, currentColor.b)
+      },
+    })
+  },
+)
 </script>

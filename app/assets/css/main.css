@@ -1,2 +1,16 @@
 @import "tailwindcss";
 @import "@nuxt/ui";
+
+@theme static {
+  --color-legacy-primary-50: #D1B2E6;
+  --color-legacy-primary-100: #CCAAE3;
+  --color-legacy-primary-200: #BA8DD9;
+  --color-legacy-primary-300: #A971D0;
+  --color-legacy-primary-400: #A063CB;
+  --color-legacy-primary-500: #9754C6;
+  --color-legacy-primary-600: #8638BD;
+  --color-legacy-primary-700: #7D2AB8;
+  --color-legacy-primary-800: #741BB3;
+  --color-legacy-primary-900: #6919A3;
+  --color-legacy-primary-950: #5F1794;
+}

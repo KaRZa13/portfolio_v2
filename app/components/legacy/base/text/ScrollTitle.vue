@@ -1,6 +1,6 @@
 <template>
   <ClientOnly>
-    <component :is="props.tag" ref="text" :class="`w-auto h-fit ${props.textClass}`">
+    <component :is="props.tag" ref="text" :class="`w-full h-fit text-center ${props.textClass}`">
       {{ props.text }}
     </component>
   </ClientOnly>

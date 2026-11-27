@@ -1,10 +1,10 @@
 <template>
   <section class="flex flex-col w-full h-auto justify-center items-center pt-32 gap-128">
-    <LegacyTextScrollTitle :text="'Mes compétences'" :tag="'h2'" :text-class="'text-3xl md:text-5xl'" />
+    <LegacyBaseTextScrollTitle :text="t('legacy.titles.skills')" :tag="'h2'" :text-class="'text-3xl md:text-5xl'" />
 
-    <main class="h-auto w-4/5 md:w-2/3 lg:w-3/4 px-4 py-8">
+    <main class="h-[70vh] w-4/5 md:w-2/3 lg:w-3/4 px-4 py-8">
       <div ref="gallery" class="flex flex-wrap justify-center items-center gap-4">
-        <LegacyCardsTilted v-for="(skill, index) in skills" :key="index" :icon="skill.icon" :icon-alt="skill.alt" :title="skill.title" />
+        <LegacyBaseCardsTilted v-for="(skill, index) in skills" :key="index" :icon="skill.icon" :icon-alt="skill.alt" :title="skill.title" />
       </div>
     </main>
   </section>
@@ -17,6 +17,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
 gsap.registerPlugin(ScrollTrigger)
 
+const { t } = useI18n()
 const gallery = ref<HTMLElement | null>(null)
 
 onMounted(async () => {
@@ -36,7 +37,7 @@ onMounted(async () => {
       end: 'bottom 85%',
       scrub: true,
       toggleActions: 'play none none reverse',
-      markers: true
+      // markers: true
     }
   })
 })

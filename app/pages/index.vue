@@ -1,5 +1,9 @@
 <template>
-  <NuxtLink to="/legacy" class="">Legacy</NuxtLink>
+  <div>
+    <UColorModeSelect />
+    <NuxtLink to="/legacy" class="">Legacy</NuxtLink>
+  </div>
+  
 </template>
 
 <script setup lang="ts">

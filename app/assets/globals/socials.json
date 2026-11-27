@@ -1,0 +1,38 @@
+[
+  {
+    "icon": "i-lucide-phone",
+    "bg_color": "bg-violet-400",
+    "border_color": "border-violet-400",
+    "text_color": "text-slate-200 hover:text-slate-900",
+    "link": "tel:+33612345678"
+  },
+  {
+    "icon": "i-lucide-github",
+    "bg_color": "bg-slate-900",
+    "border_color": "border-slate-900",
+    "text_color": "text-slate-200 hover:text-slate-900",
+    "link": "https://github.com/KaRZa13"
+  },
+  {
+    "icon": "i-lucide-linkedin",
+    "bg_color": "bg-blue-500",
+    "border_color": "border-blue-500",
+    "text_color": "text-slate-200 hover:text-slate-900",
+    "link": "https://www.linkedin.com/in/rafael-muro-39b219295/"
+  },
+  {
+    "icon": "i-lucide-mail",
+    "bg_color": "bg-red-400",
+    "border_color": "border-red-400",
+    "text_color": "text-slate-200 hover:text-slate-900",
+    "link": "mailto:rafael.muro@proton.me"
+  },
+  {
+    "icon": "i-uix-resume",
+    "bg_color": "bg-green-700",
+    "border_color": "border-green-700",
+    "text_color": "text-slate-200 hover:text-slate-900",
+    "link": "/cv_Rafael_MURO.pdf",
+    "download": true
+  }
+]

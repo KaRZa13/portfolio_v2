@@ -1,17 +1,18 @@
 <template>
-  <section class="h-auto w-auto flex flex-col mt-[25vh]">
-    <LegacyTextScrollTitle :text="'Mes réalisations'" :tag="'h2'" :text-class="'text-3xl'" />
-    <div ref="projectsWrapper" class="h-screen w-auto flex items-center">
-      <main ref="projects" class="w-auto h-full flex flex-col md:flex-row md:gap-6">
-        <LegacyCardsFlip 
-          v-for="(project, index) in projects" 
-          :ref="(el) => setElementRef(el, index)" 
-          :key="index"
-          :name="project.name"
-          :description="project.description"
+  <section class="h-auto w-full flex flex-col items-center mt-[25vh]">
+
+    <LegacyBaseTextScrollTitle :text="t('legacy.titles.projects')" :tag="'h2'" :text-class="'text-5xl pb-32'"/>
+
+    <div ref="projectsWrapper" class="h-screen w-full flex items-center md:overflow-hidden">
+      <main ref="projectsList" class="w-auto h-1/2 flex flex-col items-center gap-16 md:w-max md:flex-row md:px-[25vw]">
+        <LegacyBaseCardsHover
+          v-for="project in projects"
+          :key="project.id"
+          :name="project.name ?? t(`legacy.projects.${project.id}.name`)"
+          :description="t(`legacy.projects.${project.id}.description`)"
           :techs="project.techs"
-          :url="project.url.url"
-          :url-label="project.url.label"
+          :url="project.url"
+          :url-label="projectLinkLabel(project.id)"
           :img-src="project.image.src"
           :img-alt="project.image.alt"
         />
@@ -22,48 +23,48 @@
 
 <script setup lang="ts">
 import projects from '@/assets/legacy/projects.json'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { gsap } from 'gsap'
 
-const galleryElement = ref<HTMLElement[]>([])
+gsap.registerPlugin(ScrollTrigger)
 
-function setElementRef(el: HTMLElement, index: number): void {
-  if (el) {
-    galleryElement.value[index] = el
-  }
+const { t, te } = useI18n()
 
+const projectLinkLabel = (id: string) => {
+  const key = `legacy.projects.${id}.linkLabel`
+  return te(key) ? t(key) : t('legacy.projects.linkLabel')
 }
+const projectsWrapper = ref<HTMLElement | null>(null)
+const projectsList = ref<HTMLElement | null>(null)
+
+let matchMedia: gsap.MatchMedia | null = null
 
 onMounted(() => {
-  nextTick(() => {
-    // Identifier les éléments de la galerie
-    const firstElement: any = galleryElement.value[0]
-    const lastElement: any = galleryElement.value[galleryElement.value.length - 1]
+  matchMedia = gsap.matchMedia()
 
-    // Calculer les décalages pour centrer les éléments
-    const rightShiftFirstElement: number = firstElement.$el.offsetLeft + firstElement.$el.offsetWidth / 2 - window.innerWidth / 2
-    const leftShiftLastElement: number = lastElement.$el.offsetLeft + lastElement.$el.offsetWidth / 2 - window.innerWidth / 2
+  matchMedia.add('(min-width: 768px)', () => {
+    const wrapper = projectsWrapper.value
+    const list = projectsList.value
+    if (!wrapper || !list) return
 
-    // Centrer le premier élément
-    if (firstElement && projects.value) {
-      gsap.set(projects.value, {
-        x: -rightShiftFirstElement
-      })
-    }
+    const distance = () => list.scrollWidth - window.innerWidth
 
-    // Scroll horizontal
-    gsap.to(projects.value, {
-      x: `-${leftShiftLastElement}px`,
+    gsap.to(list, {
+      x: () => -distance(),
       ease: 'none',
       scrollTrigger: {
-        trigger: projects.value,
-        start: 'center center',
-        end: `${projects.value?.scrollWidth ? projects.value.scrollWidth - window.innerWidth : 0}`,
-        scrub: true,
+        trigger: wrapper,
+        start: 'top top',
+        end: () => `+=${distance()}`,
         pin: true,
-        markers: true,
-      }
+        pinSpacing: true,
+        scrub: 1,
+        invalidateOnRefresh: true,
+        // markers: true,
+      },
     })
   })
 })
 
+onBeforeUnmount(() => matchMedia?.revert())
 </script>

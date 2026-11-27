@@ -1,69 +1,105 @@
 {
+  "globals": {
+    "titles": {
+      "career": {
+        "main": "Mon parcours",
+        "education": "Mon parcours de formation",
+        "experience": "Mon expérience professionnelle"
+      },
+      "contact": "Contactez moi"
+    },
+    "career": {
+      "titles": {
+        "career": "Expériences professionnelles",
+        "education": "Formations"
+      },
+      "education": {
+        "bachelor": {
+          "name": "Bachelor Web & Mobile Development",
+          "date": "2023 - 2026"
+        },
+        "btsSio": {
+          "name": "BTS SIO",
+          "date": "2023 - 2025"
+        },
+        "bacSti2d": {
+          "name": "Baccalauréat STI2D",
+          "date": "2017 - 2019"
+        }
+      },
+      "career": {
+        "laConsole": {
+          "type": "Stage",
+          "name": "Développeur fullstack",
+          "date": "Janvier - Février 2025",
+          "description": "Développement d'une application de création de template HTML pour des newsletter."
+        },
+        "urssaf": {
+          "type": "Stage",
+          "name": "Développeur / Intégrateur",
+          "date": "Janvier - Février 2024",
+          "description": "Développement d'une application de collecter et de traitement des arrêts maladies."
+        }
+      }
+    },
+    "contact": {
+      "formfields": {
+        "lastname": "Votre nom",
+        "firstname": "Votre prénom",
+        "email": "Votre email",
+        "subject": "Sujet",
+        "message": "Votre message",
+        "submit": "Envoyer"
+      }
+    }
+  },
   "legacy": {
+    "titles": {
+      "profile": "Une petite présentation s'impose",
+      "skills": "Mes compétences",
+      "projects": "Mes réalisations"
+    },
     "home": {
       "name": "RAFAEL MURO",
       "description": "Concepteur/Développeur full-stack",
       "scroll": "Scroll vers le bas"
     },
     "profile": {
-      "presentation": "Je m'appelle Rafael MURO, développeur fullstack passionné par le monde du développement web. Depuis mon plus jeune âge, j’ai toujours été attiré par l’informatique, explorant mes premières lignes de code en créant des mods sur Minecraft. Aujourd’hui, en tant qu’étudiant en développement web, j’ai à cœur de concevoir des outils sur mesure pour répondre aux besoins de mes clients. Curieux et toujours en quête d’apprentissage, je m’investis pleinement dans chaque projet avec persévérance et rigueur. Mon objectif ? Construire des solutions fonctionnelles, intuitives et performantes qui allient technologie et expérience utilisateur."
+      "presentation": "Je m'appelle Rafael MURO, développeur fullstack passionné par le monde du développement web. Depuis mon plus jeune âge, j’ai toujours été attiré par l’informatique, explorant mes premières lignes de code en créant des mods sur Minecraft. Aujourd’hui, en tant qu’étudiant en développement web, j’ai à cœur de concevoir des outils sur mesure pour répondre aux besoins de mes clients. Curieux et toujours en quête d’apprentissage, je m'investis pleinement dans chaque projet avec persévérance et rigueur. Mon objectif ? Construire des solutions fonctionnelles, intuitives et performantes qui allient technologie et expérience utilisateur."
     },
-    "career": {
-      "education": [
-        {
-          "name": "Bachelor Web & Mobile Development",
-          "date": "2023 - 2026",
-          "school": "EPSI",
-          "logo": "img/career/logo_epsi.png",
-          "location": "Bordeaux, France"
-        },
-        {
-          "name": "BTS SIO",
-          "date": "2023 - 2025",
-          "school": "EPSI",
-          "logo": "img/career/logo_epsi.png",
-          "location": "Bordeaux, France"
-        },
-        {
-          "name": "Baccalauréat STI2D",
-          "date": "2017 - 2019",
-          "school": "Lycée les Eucalyptus",
-          "logo": "img/career/logo_ek.png",
-          "location": "Nice, France"
-        }
-      ],
-      "career": [
-        {
-          "type": "Stage",
-          "name": "Développeur fullstack",
-          "date": "Janvier - Février 2025",
-          "company": "laConsole",
-          "logo": "img/career/logo_laconsole.png",
-          "location": "Bordeaux, France",
-          "description": "Développement d'une application de création de template HTML pour des newsletter.",
-          "skills" : [
-            "Vue.js",
-            "Nuxt",
-            "Tailwind CSS",
-            "Notion",
-            "Notion API"
-          ]
-        },
-        {
-          "type": "Stage",
-          "name": "Développeur / Intégrateur",
-          "date": "Janvier - Février 2024",
-          "company": "URSSAF Caisse Nationale",
-          "logo": "img/career/logo_urssaf.png",
-          "location": "Sophia Antipolis, France",
-          "description": "Développement d'une application de collecter et de traitement des arrêts maladies.",
-          "skills" : [
-            "Power Platform",
-            "Microsoft 365",
-            "Python"
-          ]
-        }
-      ]
+    "projects": {
+      "linkLabel": "Découvrir le projet sur Github",
+      "laNewsletter": {
+        "description": "Générateur de template HTML de la newsletter de laConsole via un formulaire connecté à une base de données Notion"
+      },
+      "epsiFun": {
+        "description": "C'est un projet issue du Workshop de début de 2ème année de BTS SIO, réalisé par groupe de 4 en une semaine. Il centralise plusieurs mini-jeux liés au monde du développement. J'ai repris le projet pour l'améliorer."
+      },
+      "roguePoo": {
+        "description": "Jeux RPG en python orienté objet réalisé en 1ère année de BTS SIO en groupe de 2 en 10 jours. \n Il y a plusieurs classes de personnage prise en compte, une gestion d'inventaire, de combat en tour par tour et deux modes de jeu."
+      },
+      "ecoTrack": {
+        "description": "C'est un travail en groupe de 4 dans lequel nous avions pour objectif de réaliser une web app, avec une authentification sécurisée, un tableau de bord avec base de données et un form permettant de calculer son empreinte carbonne. \n De plus nous avons ajouter un système de gamification pour inciter les utilisateurs à réduire leur empreinte carbonne."
+      },
+      "portfolio": {
+        "description": "Ce même portfolio que vous êtes en train de visiter"
+      },
+      "others": {
+        "name": "Plein d'autres projets",
+        "description": "Venez voir sur mon GitHub pour découvrir mes autres projets professionnels et personnels",
+        "linkLabel": "Découvrir mes autres projets sur Github"
+      }
+    },
+    "settings": {
+      "title": "Paramètres",
+      "color_mode": "Thème",
+      "sounds": "Sons",
+      "music": "Musique",
+      "language": "Langue"
+    },
+    "credits": {
+      "dev": "Portfolio réalisé par Rafael MURO - 2026",
+      "music": "Musique : 'Moment like this' par Chill Denis"
     }
   }
 }

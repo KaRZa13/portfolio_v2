@@ -32,6 +32,7 @@
     "@tiptap/starter-kit": "^3",
     "@tiptap/suggestion": "^3",
     "@tiptap/vue-3": "^3",
+    "@toolwind/corner-shape": "^0.0.8-3",
     "eslint": "^9.0.0 || ^10.0.0",
     "gsap": "^3.15.1",
     "nuxt": "^4.4.8",

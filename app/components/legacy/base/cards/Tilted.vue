@@ -1,7 +1,7 @@
 <template>
   <article 
     ref="cardRef" 
-    class="md:h-50 lg:h-42 h-36 flex flex-col bg-purple-200/50 items-center justify-around rounded-lg border border-black shadow-lg aspect-square
+    class="md:h-50 lg:h-42 h-36 flex flex-col bg-purple-200/50 dark:bg-purple-950/50 items-center justify-around rounded-lg border border-black shadow-lg aspect-square
     before:w-8 before:h-8 before:border before:border-gray-600 before:absolute before:z-10 before:opacity-30 before:duration-500 before:top-7 before:right-7
     lg:before:top-6 lg:before:right-6 md:before:top-8 md:before:right-8 before:border-b-0 before:border-l-0 
     hover:before:w-[calc(100%-2rem)] hover:before:h-[calc(100%-2rem)] hover:after:w-[calc(100%-2rem)] hover:after:h-[calc(100%-2rem)]
@@ -20,7 +20,7 @@
         <UIcon :name="icon" :alt="iconAlt " class="size-18"/>
       </div>
       <div class="absolute bottom-1 lg:bottom-px left-1/2 transform -translate-x-1/2 text-center w-full">
-        <h3 class="text-xl lg:text-xl md:text-2xl font-bold text-gray-800 leading-tight">{{ title }}</h3>
+        <h3 class="text-xl lg:text-xl md:text-2xl font-bold text-slate-800 dark:text-slate-200 leading-tight">{{ title }}</h3>
       </div>
     </main>
   </article>

@@ -1,0 +1,48 @@
+{
+  "education": [
+    {
+      "id": "bachelor",
+      "school": "EPSI",
+      "logo": "/img/career/logo_epsi.webp",
+      "location": "Bordeaux, France"
+    },
+    {
+      "id": "btsSio",
+      "school": "EPSI",
+      "logo": "/img/career/logo_epsi.webp",
+      "location": "Bordeaux, France"
+    },
+    {
+      "id": "bacSti2d",
+      "school": "Lycée les Eucalyptus",
+      "logo": "/img/career/logo_ek.webp",
+      "location": "Nice, France"
+    }
+  ],
+  "career": [
+    {
+      "id": "laConsole",
+      "company": "laConsole",
+      "logo": "/img/career/logo_laconsole.webp",
+      "location": "Bordeaux, France",
+      "skills": [
+        "Vue.js",
+        "Nuxt",
+        "Tailwind CSS",
+        "Notion",
+        "Notion API"
+      ]
+    },
+    {
+      "id": "urssaf",
+      "company": "URSSAF Caisse Nationale",
+      "logo": "/img/career/logo_urssaf.webp",
+      "location": "Sophia Antipolis, France",
+      "skills": [
+        "Power Platform",
+        "Microsoft 365",
+        "Python"
+      ]
+    }
+  ]
+}

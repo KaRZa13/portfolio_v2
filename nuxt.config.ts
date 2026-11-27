@@ -22,6 +22,7 @@ export default defineNuxtConfig({
         'gsap/ScrollSmoother',
         'gsap/ScrollTrigger',
         'gsap/SplitText',
+        'gsap/Flip',
         'ogl',
       ],
     },
